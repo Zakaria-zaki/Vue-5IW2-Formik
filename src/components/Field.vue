@@ -1,16 +1,17 @@
 <template>
     <div>
-      <label>{{ label }}</label>
-      <component
-        :is="as"
-        v-model="value"
-        :error="errors[name]"
+      <label>{{ as }}:</label>
+      <input
+        v-model="values[name]"
+        :type="type"
+        :disabled="isSubmitting"
       />
+      <span>{{ errors[name] }}</span>
     </div>
   </template>
   
   <script>
-  import { toRefs, reactive } from 'vue'
+  import { inject } from 'vue';
   
   export default {
     name: 'Field',
@@ -23,26 +24,20 @@
         type: String,
         required: true,
       },
+      type: {
+        type: String,
+      },
     },
-    setup(props, context) {
-      const formik = context.parent
-  
-      const state = reactive({
-        value: formik.values[props.name],
-      })
-  
-      watch(
-        () => state.value,
-        (newValue) => {
-          formik.values[props.name] = newValue
-        }
-      )
+    setup() {
+      const values = inject('values');
+      const errors = inject('errors');
+      const isSubmitting = inject('isSubmitting');
       
       return {
-        ...toRefs(state),
-        ...toRefs(formik),
-        label: props.name[0].toUpperCase() + props.name.slice(1),
-      }
+        values,
+        errors,
+        isSubmitting,
+      };
     },
-  }
+  };
   </script>
