@@ -1,26 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <Formik :initialValues="initialValues" :validate="validate" @submit="onSubmit">
+      <Field name="name" as="input" />
+      <Field name="email" as="input" />
+      <Field name="password" as="input" type="password" />
+      <Field name="passwordConfirmation" as="input" type="password" />
+    </Formik>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Formik from './components/Formik.vue'
+import Field from './components/Field.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Formik,
+    Field,
+  },
+  data() {
+    return {
+      initialValues: {
+        name: '',
+        email: '',
+        password: '',
+        passwordConfirmation: '',
+      },
+      validate(values) {
+        const errors = {}
+        if (values.password !== values.passwordConfirmation) {
+          errors.passwordConfirmation = 'Passwords do not match'
+        }
+        return errors
+      },
+      onSubmit(values) {
+        console.log(values)
+      },
+    }
+  },
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
