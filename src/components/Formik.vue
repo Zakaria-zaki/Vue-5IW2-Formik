@@ -1,9 +1,9 @@
 <template>
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="handleSubmit" @input="handleInput">
       <slot />
-      <button type="submit" :disabled="!isSubmitting">Submitt</button>
+      <button type="submit" :disabled="!isSubmitting" >Submitt</button>
     </form>
-  </template>
+</template>
   
   <script>
   export default {
@@ -12,6 +12,7 @@
       return {
         values: this.values,
         errors: this.errors,
+        isSubmitting:this.isSubmitting
       };
     },
     props: {
@@ -40,6 +41,9 @@
           this.$emit('submit', this.values);
         }
       },
+      handleInput(event, data) {
+    console.log(data)
+  },
     },
   };
   </script>

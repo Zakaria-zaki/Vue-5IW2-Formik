@@ -1,14 +1,12 @@
 <template>
     <div>
       <label>{{ as }}:</label>
-      <input
-        v-model="values[name]"
-        :type="type"
-        :disabled="isSubmitting"
-      />
+      <component :is="as" :value="values[name]" :name="name" @input="updateValue" :disabled="isSubmitting" >
+        <slot />
+      </component>
       <span>{{ errors[name] }}</span>
     </div>
-  </template>
+</template>
   
   <script>
   import { inject } from 'vue';
@@ -27,17 +25,28 @@
       type: {
         type: String,
       },
+      
     },
     setup() {
-      const values = inject('values');
-      const errors = inject('errors');
-      const isSubmitting = inject('isSubmitting');
-      
+    const values = inject('values');
+    const errors = inject('errors');
+    const isSubmitting = inject('isSubmitting');
+
       return {
         values,
         errors,
         isSubmitting,
+        
       };
     },
+    methods: {
+      updateValue(event) {
+        this.values = { ...this.values, [this.name]: event.target.value };
+        this.$emit('input', event, this.values[this.name]);
+        console.log(this.values)
+      },
+    },
+    beforeMount(){
+    }
   };
   </script>

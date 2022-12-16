@@ -9,7 +9,6 @@
       <option value="green">Green</option>
       <option value="blue">Blue</option>
     </Field>
-    <button type="submit" :disabled="isSubmitting">Submit</button>
   </Formik>
 </template>
 
@@ -26,11 +25,11 @@ export default {
   data() {
     return {
       initialValues: {
-        name: '',
-        email: '',
+        name: 'zefzef',
+        email: 'zefz',
         password: '',
         passwordConfirmation: '',
-        favoriteColor: '',
+        favoriteColor: 'red',
       },
     };
   },
@@ -49,7 +48,7 @@ export default {
         return errors;
 },
     onSubmit(values) {
-      console.log("ok :",values)
+      console.log("ok :" )
     },
   },
 };
