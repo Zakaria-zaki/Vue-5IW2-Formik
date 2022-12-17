@@ -1,4 +1,4 @@
-<template>
+<template >
     <div>
       <label>{{ as }}:</label>
       <component :is="as" :value="values[name]" :name="name" @input="updateValue" :disabled="isSubmitting" >
