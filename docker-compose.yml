@@ -1,12 +1,10 @@
-version: "3"
+version: '3'
 services:
-  vue:
-    container_name: vue
-    image: node:lts
-    working_dir: /var/www/html/app/
-    entrypoint: /bin/bash
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    volumes:
-      - ./:/var/www/html/app
-    tty: true
+    environment:
+      - VUE_APP_API_URL=http://localhost:3000

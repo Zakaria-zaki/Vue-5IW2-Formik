@@ -12,48 +12,18 @@ $ npm install formik --save
 # start docker-compose
 $ make start 
 
-# npm install
-$ make setup 
-
-# run project
-$ make serve 
-
-# run build
-$ make build 
-
-# run lint
-$ make lint 
-
 # stop docker-compose
 $ make stop 
 ```
 ### Windows or MacOS
 ```bash
 # start docker-compose
-$ docker-compose up -d 
+$ docker-compose up --build
+```
 
+```bash
 # stop docker-compose
 $ docker-compose down
-```
-
-```bash
-# Project setup
-docker-compose exec vue npm install
-```
-
-``` bash 
-# Compiles and hot-reloads for development
-docker-compose exec vue npm run serve
-```
-
-```bash
-# Compiles and minifies for production
-docker-compose exec vue npm run build
-```
-
-```bash 
-# Lints and fixes files
-docker-compose exec vue npm run lint
 ```
 
 ### Customize configuration
