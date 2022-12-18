@@ -1,21 +1,9 @@
 # Formik
 
-```bash
-$ npm install formik --save
-```
-
 ## Usage
-### Linux
- - we have Makefile
 
-```bash
-# start docker-compose
-$ make start 
-
-# stop docker-compose
-$ make stop 
 ```
-### Windows or MacOS
+### Using Docker compose 
 ```bash
 # start docker-compose
 $ docker-compose up --build
@@ -25,9 +13,6 @@ $ docker-compose up --build
 # stop docker-compose
 $ docker-compose down
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Membres du groupe
 - Outhmane ELMOHRI
