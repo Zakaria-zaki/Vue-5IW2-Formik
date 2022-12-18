@@ -14,7 +14,7 @@
 
 
 ## Membres du groupe
-- Outhmane ELMOHRI
+- Othmane ELMOHRI
 - Zakaria ATTAOUI
 
 ## Objectif
