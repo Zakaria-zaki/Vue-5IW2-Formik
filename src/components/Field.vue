@@ -1,10 +1,9 @@
 <template >
     <div>
       <label>{{ name }}:</label>
-      <component :is="as" :value="values[name]" :name="name" @input="updateValue" :disabled="isSubmitting" >
+      <component :is="as" :value="values[name]" :name="name" @input="updateValue"  >
         <slot />
       </component>
-      <span>{{ errors[name] }}</span>
     </div>
 </template>
   
@@ -29,14 +28,9 @@
     },
     setup() {
     const values = inject('values');
-    const errors = inject('errors');
-    console.log()
-    const isSubmitting = inject('isSubmitting');
 
       return {
         values,
-        errors,
-        isSubmitting,
         
       };
     },
@@ -44,12 +38,9 @@
       updateValue(event) {
         this.values = { ...this.values, [this.name]: event.target.value };
         this.$emit('input', event, this.values[this.name]);
-        const errors = inject('errors');
-        console.log(errors)
       },
     },
     beforeMount(){
-      console.log(this.errors)
     }
   };
   </script>

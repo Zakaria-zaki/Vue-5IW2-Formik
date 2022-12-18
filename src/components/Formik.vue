@@ -32,14 +32,12 @@
     watch:{
       values(value){                 
         this.errors = this.validate(this.values);
-
+        let button = this.$refs.form.querySelector("[type=submit]");
         if (Object.keys(this.errors).length === 0) {
-          this.isSubmitting = true;
-          this.$emit('submit', this.values);
+          button.removeAttribute('disabled');
         }
-          else{
-            console.log(this.errors)
-         this.isSubmitting = false;
+          else{ 
+            button.setAttribute('disabled',true);
         }
       },
     },
@@ -47,15 +45,12 @@
       return {
         values: this.initialValues,
         errors: {},
-        isSubmitting: false,
       };
     },
     methods: {
       handleSubmit() {
         this.errors = this.validate(this.values);
-  
         if (Object.keys(this.errors).length === 0) {
-          this.isSubmitting = true;
           this.$emit('submit', this.values);
         }
       },
@@ -70,7 +65,6 @@
         }
       }
       this.values=values
-      console.log(this.values)
       },
     },
   };

@@ -8,7 +8,7 @@
       <option value="client">Client</option>
       <option value="admin">Admin</option>
     </Field>
-    <button type="submit" :disabled="!isSubmitting" >Submitt</button>
+    <button type="submit"  >Submitt</button>
   </Formik>
 </template>
 
@@ -37,13 +37,13 @@ export default {
     //exemple of validation funtion ( passwod should be equele to passwordConfirmation )
     validate(values) {
         const errors = {};
-        if (values.password !== values.passwordConfirmation) {
-          errors.passwordConfirmation = 'Passwordcand  passwordConfirmation do not match';
+        if (values.password !== values.passwordConfirmation || values.password =='') {
+          errors.passwordConfirmation = 'Password and  passwordConfirmation do not match';
         }
         return errors;
 },
     onSubmit(values) {
-      console.log("ok :" )
+      window.alert(JSON.stringify(values));
     },
   },
 };
