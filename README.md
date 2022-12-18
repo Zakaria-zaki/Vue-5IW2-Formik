@@ -1,4 +1,4 @@
-# formik
+# Formik
 
 ```bash
 $ npm install formik --save
