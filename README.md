@@ -2,17 +2,16 @@
 
 ## Usage
 
-```
-### Using Docker compose 
-```bash
-# start docker-compose
-$ docker-compose up --build
-```
+1. clone this repository
 
-```bash
-# stop docker-compose
-$ docker-compose down
-```
+2. Build the image and starting container up:
+
+        docker compose up --build
+        
+3. Open http://localhost:8080/ in your browser.
+4. to stop docker-compose:
+        docker-compose down
+
 
 ## Membres du groupe
 - Outhmane ELMOHRI
