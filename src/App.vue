@@ -4,11 +4,11 @@
     <Field name="email" as="input" />
     <Field name="password" as="input" type="password" />
     <Field name="passwordConfirmation" as="input" type="password" />
-    <Field name="favoriteColor" as="select">
-      <option value="red">Red</option>
-      <option value="green">Green</option>
-      <option value="blue">Blue</option>
+    <Field name="role" as="select">
+      <option value="client">Client</option>
+      <option value="admin">Admin</option>
     </Field>
+    <button type="submit" :disabled="!isSubmitting" >Submitt</button>
   </Formik>
 </template>
 
@@ -25,25 +25,20 @@ export default {
   data() {
     return {
       initialValues: {
-        name: 'zefzef',
-        email: 'zefz',
+        name: '',
+        email: '',
         password: '',
         passwordConfirmation: '',
-        favoriteColor: 'red',
+        role: 'client',
       },
     };
   },
   methods: {
+    //exemple of validation funtion ( passwod should be equele to passwordConfirmation )
     validate(values) {
         const errors = {};
-        if (!values.name) {
-          errors.name = 'Please provide a name';
-        }
-        if (!values.email) {
-          errors.email = 'Please provide an email address';
-        }
         if (values.password !== values.passwordConfirmation) {
-          errors.passwordConfirmation = 'Passwords do not match';
+          errors.passwordConfirmation = 'Passwordcand  passwordConfirmation do not match';
         }
         return errors;
 },

@@ -1,7 +1,9 @@
 <template>
     <form @submit.prevent="handleSubmit" v-on:input="handleInput" ref="form">
       <slot />
-      <button type="submit" :disabled="!isSubmitting" >Submitt</button>
+      <p v-for="error in errors" :key="error">- {{error}}</p>
+      <br>
+      
     </form>
 </template>
   
@@ -15,7 +17,6 @@
       return {
         values: this.values,
         errors: this.errors,
-        isSubmitting:this.isSubmitting
       };
     },
     props: {
@@ -36,7 +37,10 @@
           this.isSubmitting = true;
           this.$emit('submit', this.values);
         }
-        else this.isSubmitting = false;
+          else{
+            console.log(this.errors)
+         this.isSubmitting = false;
+        }
       },
     },
     data() {
@@ -71,3 +75,10 @@
     },
   };
   </script>
+
+<style>
+
+p{
+  color: red;
+}
+</style>
